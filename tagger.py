@@ -563,7 +563,7 @@ if __name__ == '__main__':
     #     print(i.value,end=' ')
     # print('')
     t.prepareKnowledge(train)
-    t.train(train,30)
+    t.train(train,40)
     # print(t.tag_list)
     # while(True):
     #     s = input()
