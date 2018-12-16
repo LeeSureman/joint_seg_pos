@@ -5,9 +5,6 @@ root = r"D:\yue zhang\ctb8.0\data\postagged"
 # root = r'D:\重要的文件夹\ctb8.0\data\postagged'
 file_path = os.listdir(root)
 # print(file_path)
-raw = []
-segmented = []
-tag = []
 # f = open(root + '\\' + 'chtb_0930.nw.pos', encoding='utf-8')
 sid = 0
 
@@ -20,6 +17,8 @@ def parseTagged(line, fp, i):
     try:
         for pair in line:
             p1, p2 = pair.split('_')
+            # if (p1[0]=='我' or p1[0]=='你') and p2 =='NN':
+            #     print(line)
             s.append(p1)
             t.append(p2)
             # if '-' in p2:
@@ -31,6 +30,9 @@ def parseTagged(line, fp, i):
 
 
 def loadGeneralData():
+    raw = []
+    tag = []
+    segmented = []
     for fp in file_path:
         if fp < r"chtb_1152":
             f = open(root + '\\' + fp, encoding='utf-8')
@@ -99,7 +101,8 @@ def loadCTB3Data():
                     # print('dev:',len(dev_segmented))
                     # print('dev:',len(dev_tag))
                     # print('dev:',len(dev_raw))
-        if (fp<r'chtb_0301'and fp>r'chtb_0271'):
+
+        elif (fp<r'chtb_0301'and fp>r'chtb_0271'):
             f = open(root + '\\' + fp, encoding='utf-8')
             lines = f.readlines()
             for i in range(len(lines)):
@@ -112,7 +115,7 @@ def loadCTB3Data():
                     test_tag.append(t)
                     test_raw.append(''.join(s))
 
-        if fp < r"chtb_1152":
+        elif fp < r"chtb_1152":
             f = open(root + '\\' + fp, encoding='utf-8')
             lines = f.readlines()
 
